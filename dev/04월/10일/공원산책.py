@@ -69,6 +69,7 @@ def solution(park, routes):
 
 
 # col, row 헷갈리지 말것
+##
 park = ["OSO", "OOO", "OXO", "OOO"]
 routes = ["E 2", "S 3", "W 1"]
 # result = [0,0]
