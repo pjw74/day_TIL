@@ -1,14 +1,25 @@
 --------------------시작------------------------
 hello world
 
-- 7강: 연결 리스트(Linked Lists)(1) ->
+-> 7강: 연결 리스트(Linked Lists)(1) 
+ 
+ - 추상적 자료 구조
+  - Data(정수, 문자열, 레코드, ...)
+  - A set of operations(삽입,삭제,순회, ...)
+                       (정렬, 탐색, ...)
+
+* Node <Data, Link> 개념 숙지
+
+ - 단방향 연결 리스트 (singly linked list)
+ - 연산 정의
+    - 특정 원소 참조(k번째)
+    - 리스트 순회(list traversal)
+    - 길이 얻어내기
 
 
-- 8강: 연결 리스트(Linked Lists)(2) ->
+-> 8강: 연결 리스트(Linked Lists)(2) 
 
-
-- 9강: 연결 리스트(Linked Lists)(3) ->
-
+-> 9강: 연결 리스트(Linked Lists)(3) 
 
 - 10강: 양방향 연결 리스트(Doubly Linked Lists) ->
 
