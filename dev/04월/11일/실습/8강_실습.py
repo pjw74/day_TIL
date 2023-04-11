@@ -45,37 +45,24 @@ class LinkedList:
         self.nodeCount += 1
         return True
 
-
-    def popAt(self, pos):     
+    def popAt(self, pos):
         if pos < 1 or pos > self.nodeCount:
-            raise IndexError # 인자 pos가 올바른 범위 값 아닐 때 raise   
-        #answer = self.getAt(pos)          
-        answer = self.getAt(pos-1)  
-        
-        # 1.tail->2.head  2.tail->3.head
-        # 1.tail->3.head
-        
+            raise IndexError  # 인자 pos가 올바른 범위 값 아닐 때 raise
+
         if pos == 1:
-            newNode.next = self.head
-            self.head = newNode
+            curr = self.head
+            self.head = curr.next
+            if self.nodeCount == 1:
+                self.tail = None
         else:
-            if pos == self.nodeCount + 1:
-                prev = self.tail
-                
-            else:
-                prev = self.getAt(pos - 1)
-                next =
-                
-            newNode.next = prev.next
-            prev.next = newNode
-            
-        if pos == self.nodeCount + 1:
-            self.tail = newNode
-                        
-        self.nodeCount += 1
-        #        
-        return answer        
-    
+            prev = self.getAt(pos-1)
+            curr = prev.next
+            prev.next = prev.next.next
+            if pos == self.nodeCount:
+                self.tail = prev
+        self.nodeCount -= 1
+
+        return curr.data
 
     def traverse(self):
         result = []
