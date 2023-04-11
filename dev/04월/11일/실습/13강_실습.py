@@ -50,36 +50,90 @@ def infixToPostfix(tokenList):  # in->post 구현
         '(': 1,
     }
 
-# (1+3) * (1+3)
-# 13+13+*
-
     opStack = ArrayStack()
     postfixList = []  # 후위표현
-    #numList = []
+
     for i in tokenList:
-        if opStack.size == 0:
-            opStack.push(i)
+        if len(postfixList) == 0 and '(' != i:
+            postfixList.append(i)
         else:
-            if i not in prec:
+            if i not in prec and ')' != i:
                 postfixList.append(i)
-                # opStack.push(i)
-            if i in prec and opStack.size != 0:
-                if prec[opStack.peek()] < prec[i]:
-                    a = opStack.pop()
+            else:
+                if opStack.size() == 0:
                     opStack.push(i)
-                    opStack.push(a)
+                else:
+                    if ')' == i:
+                        while True:
+                            a = opStack.pop()
+                            if '(' != a:
+                                postfixList.append(a)
+                            else:
+                                break
+                    else:
+                        if prec[i] > prec[opStack.peek()] or '(' == i:
+                            opStack.push(i)
+                        else:
+                            a = opStack.pop()
+                            postfixList.append(a)
+                            if opStack.size() != 0:
+                                if prec[i] > prec[opStack.peek()] or '(' == i:
+                                    opStack.push(i)
+                                elif prec[i] == prec[opStack.peek()]:
+                                    a = opStack.pop()
+                                    postfixList.append(a)
+                                    opStack.push(i)
+                            else:
+                                opStack.push(i)
 
-            if ')' == i:
-                a = opStack.pop()
-                postfixList.append(a)
-
-    while not opStack.isEmpty():
+    while opStack.size() != 0:
+        b = opStack.pop()
+        if '(' != b:
+            postfixList.append(b)
 
     return postfixList
 
 
 def postfixEval(tokenList):  # 구현
-    pass
+    opStack = ArrayStack()
+    ans = 0
+    test = []
+    prec = {
+        '*': 3,
+        '/': 3,
+        '+': 2,
+        '-': 2,
+        '(': 1,
+    }
+    for i in tokenList:
+        if i in prec:
+            opStack.push(i)
+        else:
+            test.append(i)
+        if opStack.size() != 0:
+            a = test.pop()
+            b = test.pop()
+
+            c = opStack.pop()
+            #d = prec[c]
+            if c == '*':
+                ans = b*a
+            elif c == '/':
+                ans = b/a
+            elif c == '+':
+                ans = b+a
+            elif c == '-':
+                ans = b-a
+
+            # print(type(d))
+            #ans = b+int(c+1)
+
+            test.append(ans)
+
+    while opStack.size() != 0:
+        c = opStack.pop()
+
+    return ans
 
 
 def solution(expr):
@@ -89,5 +143,5 @@ def solution(expr):
     return val
 
 
-expr = "(1+3) * (1+3)"
+expr = "(2-1)*(4-3)"
 print(solution(expr))

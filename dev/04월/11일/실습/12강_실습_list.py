@@ -30,7 +30,7 @@ prec = {
 
 def solution(S):
     opStack = ArrayStack()
-    answer = ''
+    answer = []
 
     for i in S:
         if len(answer) == 0 and '(' != i:
@@ -73,7 +73,7 @@ def solution(S):
     return answer
 
 
-S = "(2-1)*(4-3)"
+S = "A+B*C/(D*E-F)+G"
 
 
 #S = "(A+B)*(C+D)"
