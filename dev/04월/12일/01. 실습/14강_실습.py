@@ -1,12 +1,11 @@
 class Node:
-
     def __init__(self, item):
         self.data = item
         self.prev = None
         self.next = None
 
-class DoublyLinkedList:
 
+class DoublyLinkedList:
     def __init__(self):
         self.nodeCount = 0
         self.head = Node(None)
@@ -16,24 +15,21 @@ class DoublyLinkedList:
         self.tail.prev = self.head
         self.tail.next = None
 
-
     def __repr__(self):
         if self.nodeCount == 0:
-            return 'LinkedList: empty'
+            return "LinkedList: empty"
 
-        s = ''
+        s = ""
         curr = self.head
         while curr.next.next:
             curr = curr.next
             s += repr(curr.data)
             if curr.next.next is not None:
-                s += ' -> '
+                s += " -> "
         return s
-
 
     def getLength(self):
         return self.nodeCount
-
 
     def traverse(self):
         result = []
@@ -43,7 +39,6 @@ class DoublyLinkedList:
             result.append(curr.data)
         return result
 
-
     def reverse(self):
         result = []
         curr = self.tail
@@ -51,7 +46,6 @@ class DoublyLinkedList:
             curr = curr.prev
             result.append(curr.data)
         return result
-
 
     def getAt(self, pos):
         if pos < 0 or pos > self.nodeCount:
@@ -81,14 +75,12 @@ class DoublyLinkedList:
         self.nodeCount += 1
         return True
 
-
     def insertAt(self, pos, newNode):
         if pos < 1 or pos > self.nodeCount + 1:
             return False
 
         prev = self.getAt(pos - 1)
         return self.insertAfter(prev, newNode)
-
 
     def popAfter(self, prev):
         curr = prev.next
@@ -98,14 +90,12 @@ class DoublyLinkedList:
         self.nodeCount -= 1
         return curr.data
 
-
     def popAt(self, pos):
         if pos < 1 or pos > self.nodeCount:
-            raise IndexError('Index out of range')
+            raise IndexError("Index out of range")
 
         prev = self.getAt(pos - 1)
         return self.popAfter(prev)
-
 
     def concat(self, L):
         self.tail.prev.next = L.head.next
@@ -116,30 +106,24 @@ class DoublyLinkedList:
 
 
 class LinkedListQueue:
-
     def __init__(self):
         self.data = DoublyLinkedList()
 
     def size(self):
-        return self.getLength(self)
+        return len(self.traverse(self))
 
-
-    def isEmpty(self):        
+    def isEmpty(self):
         return self.getLength(self) == 0
 
-
-    def enqueue(self, item): # insert
+    def enqueue(self, item):  # insert
         node = Node(item)
-        ??
+        # ??
 
-
-    def dequeue(self): # pop
-        return ??
-
+    def dequeue(self):  # pop
+        return  # ??
 
     def peek(self):
-        return ??
-
+        return  # ??
 
 
 def solution(x):
