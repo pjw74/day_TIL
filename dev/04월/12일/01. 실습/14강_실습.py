@@ -121,19 +121,19 @@ class LinkedListQueue:
         self.data = DoublyLinkedList()
 
     def size(self):
-        return self.
+        return self.getLength(self)
 
 
-    def isEmpty(self):
-        return ??
+    def isEmpty(self):        
+        return self.getLength(self) == 0
 
 
-    def enqueue(self, item):
+    def enqueue(self, item): # insert
         node = Node(item)
         ??
 
 
-    def dequeue(self):
+    def dequeue(self): # pop
         return ??
 
 
