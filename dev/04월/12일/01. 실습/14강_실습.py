@@ -47,6 +47,7 @@ class DoublyLinkedList:
             result.append(curr.data)
         return result
 
+    # pos 3 cnt 4
     def getAt(self, pos):
         if pos < 0 or pos > self.nodeCount:
             return None
@@ -110,20 +111,30 @@ class LinkedListQueue:
         self.data = DoublyLinkedList()
 
     def size(self):
-        return len(self.traverse(self))
+        return len(self.data.traverse())
+
+    # traverse(self)
 
     def isEmpty(self):
-        return self.getLength(self) == 0
+        return self.data.getLength() == 0
+
+    # getLength(self)
 
     def enqueue(self, item):  # insert
         node = Node(item)
-        # ??
+        self.data.insertAt(self.size() + 1, node)
+
+    # insertAfter(self, prev, newNode):
 
     def dequeue(self):  # pop
-        return  # ??
+        return self.data.popAt(1)
+
+    # popAfter(self, prev)
 
     def peek(self):
-        return  # ??
+        return self.data.head.next.data
+
+    # getAt(self, pos)
 
 
 def solution(x):
