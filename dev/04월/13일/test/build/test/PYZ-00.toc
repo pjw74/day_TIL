@@ -1,4 +1,4 @@
-('C:\\Users\\jjung\\Documents\\GitHub\\day_TIL\\dev\\04월\\13일\\test\\build\\test\\PYZ-00.pyz',
+('c:\\Users\\jjung\\Documents\\GitHub\\day_TIL\\dev\\04월\\13일\\test\\build\\test\\PYZ-00.pyz',
  [('__future__',
    'C:\\Users\\jjung\\AppData\\Local\\Programs\\Python\\Python310\\lib\\__future__.py',
    'PYMODULE'),

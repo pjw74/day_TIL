@@ -6,12 +6,19 @@ excel = win32.gencache.EnsureDispatch("Excel.Application")
 while True:
     if keyboard.is_pressed("F9"):
         if excel.Visible != 1:
-            wb = excel.Workbooks.Open(r"C:\Users\jjung\Documents\카카오톡 받은 파일\0412 내담자관리")
+            wb = excel.Workbooks.Open(r"C:\Users\김혜진\Desktop\1")
+            if wb == None:
+                excel.Quit()
+                break
+
             excel.Visible = 1
             excel.WindowState = win32.constants.xlMaximized  # this works for me
 
     if keyboard.is_pressed("F9"):
-        wb = excel.Workbooks.Open(r"C:\Users\jjung\Documents\카카오톡 받은 파일\0412 내담자관리")
+        wb = excel.Workbooks.Open(r"C:\Users\김혜진\Desktop\1")
+        if wb == None:
+            excel.Quit()
+            break
         excel.Visible = 0
         excel.WindowState = win32.constants.xlMinimized
 
