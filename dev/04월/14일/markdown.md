@@ -16,6 +16,8 @@
 
 # 2. 글씨 색
 
+${\color{red}Red}$
+
 - <span style="color:red"> 빨강 글씨 </span>
 
 red
