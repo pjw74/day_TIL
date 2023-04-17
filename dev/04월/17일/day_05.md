@@ -1,12 +1,12 @@
 ## <u>Part01 개요</u>
 
-## <u>Part02 HTML</u>
+### <u>Part02 HTML</u>
 
-## <u>Part03 CSS</u>
+#### <u>Part03 CSS</u>
 
-## <u>Part04 반응형</u>
+##### <u>Part04 반응형</u>
 
-## <u>Part05 End</u>
+###### <u>Part05 End</u>
 
 1. 윈도우 환경 실습
 
@@ -54,6 +54,7 @@
 ---
 
 - 속성(Attribute)과 값(Value), 콘텐츠(Content)
+
   ![ex_screenshot](./img/2.PNG)
 
 ---
@@ -111,7 +112,7 @@ Section 02 - style, link, script: 문서 내용의 외형에
    - <_div_>,<_article_>,<_section_>, ...
      <br>
      <br>
-   1. **inline** (인라인 레벨 요소)
+   2. **inline** (인라인 레벨 요소)
    - 블록 요소 내에 포함되는 요소.
      - 주로 문장, 단어 같은 작은 부분에 사용되며 한 줄에 나열
      - 좌/우 여백을 넣는 것만 허용된다.
@@ -119,7 +120,7 @@ Section 02 - style, link, script: 문서 내용의 외형에
    - <_span_>,<_a_>,<_strong_>, ...
      <br>
      <br>
-   1. **inline-block**
+   3. **inline-block**
    - 글자처럼 취급되나, block 태그의 성질을 가지는 요소.
      - block과 마찬가지로 크기와 내/외부 여백을 지정할 수 있다.
      - **CSS로 성질을 바꾼 것** 이기 때문에 의미상 **인라인 레벨 요소**이다.
