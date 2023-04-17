@@ -3,5 +3,9 @@
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "python.formatting.provider": "none",
-  "python.analysis.extraPaths": ["./dev/04월/11일/이론"]
+  "python.analysis.extraPaths": ["./dev/04월/11일/이론"],
+
+  "powermode.enabled": true,
+  "powermode.shake.enabled": false,
+  "powermode.presets": "particles"
 }
