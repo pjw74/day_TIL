@@ -23,9 +23,12 @@
 
 <br>
 
-3. HTTP의 구조
-   - 웹상에서 정보를 주고 받기 위한 **약속**
-   - 1. HTTP요청(Request) - 2. HTTP응답(Response) - HTTP도 요청/응답에 대한 정보를 담는 **Head**와 내용물인 **Body**로 나뉜다!
+3.  HTTP의 구조
+
+    - 웹상에서 정보를 주고 받기 위한 **약속**
+      <br>
+
+            a. HTTP요청(Request) - b. HTTP응답(Response) - c. HTTP도 요청/응답에 대한 정보를 담는 **Head**와 내용물인 **Body**로 나뉜다!
 
 <br>
 
