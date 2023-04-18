@@ -41,7 +41,7 @@
   <br>
   User-Agent: Mozilla/5.0
 
-- <_HTTP Request_>
+- <_HTTP Response_>
   <br>
   HTTP/1.1 200 OK
   <br>
