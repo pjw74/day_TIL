@@ -2,7 +2,7 @@
 
 - ### 실습 진행(jupyer nb)
 
-[Github : 2-2](https://github.com/pjw74/HTTP_Study/blob/main/1-4.ipynb)
+  - [Github : 2-4](https://github.com/pjw74/HTTP_Study/blob/main/2-4.%20HTML%EC%9D%98%20Locator%EB%A1%9C%20%EC%9B%90%ED%95%98%EB%8A%94%20%EC%9A%94%EC%86%8C%20%EC%B0%BE%EA%B8%B0.ipynb)
 
 - 태그는 자신의 이름 뿐만 아니라 고유한 속성 또한 가질 수 있습니다.
 - 이 중에서 id와 class는 Locator로서, 특정 태그를 지칭하는 데에 사용됩니다.
@@ -37,7 +37,7 @@
    ***
 
    <br>
-   - **비동기 처리**: 요청에 따른 응답을 ${\color{violet}기다리지 않는다}$
+   - **비동기 처리**: 요청에 따른 응답을 ${\color{violet}완전하지\space않은\space경우}$
 
    ![ex_screenshot](./img/2.PNG)
 
@@ -49,7 +49,7 @@
 
 ${\space}$
 
-2. 동적 웹 사이트의 동작 방식
+1. 동적 웹 사이트의 동작 방식
 1.
 
 ![ex_screenshot](./img/3.PNG)
