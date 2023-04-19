@@ -135,7 +135,7 @@
 
 - ### 실습 진행(jupyer nb)
 
-[Github : 1-4](https://github.com/pjw74/HTTP_Study/blob/main/1-4.ipynb)
+  - [Github : 1-4](https://github.com/pjw74/HTTP_Study/blob/main/1-4.ipynb)
 
   <br>
   <br>
