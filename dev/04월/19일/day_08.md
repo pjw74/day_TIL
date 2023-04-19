@@ -117,8 +117,9 @@
 
   - [Github : 3-5](https://github.com/pjw74/HTTP_Study/blob/main/3-5.%20%ED%82%A4%EB%B3%B4%EB%93%9C%20%EC%9D%B4%EB%B2%A4%ED%8A%B8%20%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0.ipynb)
 
-- 실제 예제와 좀 달라서 해맸지만 XPATH로 완료
+- 실제 예제와 좀 달라서 헤맸지만 XPATH로 완료
 - 참고 : [Selenium](https://www.selenium.dev/documentation/webdriver/elements/finders/)
+
   <br>
   <br>
   <br>
