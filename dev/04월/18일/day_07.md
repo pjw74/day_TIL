@@ -132,8 +132,11 @@
 <br>
 
 - ### 실습 진행(jupyer nb)
-<br>
-<br>
+
+  - [1-3](https://github.com/pjw74/HTTP_Study/blob/main/1-3.ipynb)
+
+  <br>
+  <br>
 
 ## <u>2-1. 웹 브라우저가 HTML을 다루는 방법</u>
 
@@ -141,7 +144,7 @@
 
 - 문서를 렌더링하는 가장 최초의 단계 1. 브라우저의 렌더링 엔진은 웹 문서를 로드한 후, **파싱**을 진행
   ![ex_screenshot](./img/2.PNG)
-  ---
+  ***
   <br>
 
 2. 브라우저에 대한 넓고 얕은 지식
