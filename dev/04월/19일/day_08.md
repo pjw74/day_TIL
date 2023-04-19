@@ -2,6 +2,8 @@
 
 - ### 실습 진행(jupyer nb)
 
+[Github : 2-2](https://github.com/pjw74/HTTP_Study/blob/main/1-4.ipynb)
+
 - 태그는 자신의 이름 뿐만 아니라 고유한 속성 또한 가질 수 있습니다.
 - 이 중에서 id와 class는 Locator로서, 특정 태그를 지칭하는 데에 사용됩니다.
 
@@ -43,11 +45,11 @@
 
    <br>
 
-   - 비동기 처리된 경우, 상황에 따라서 데이터가 ${\color{violet}완전하지 않은 경우}$가 발생 한다.
+   - 비동기 처리된 경우, 상황에 따라서 데이터가 ${\color{violet}완전하지\space않은\space경우}$가 발생 한다.
 
-<span style="color:red"> 글씨색 변경 </span>
+${\space}$
 
-1. 동적 웹 사이트의 동작 방식
+2. 동적 웹 사이트의 동작 방식
 1.
 
 ![ex_screenshot](./img/3.PNG)
