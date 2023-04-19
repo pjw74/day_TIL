@@ -95,6 +95,8 @@
 
 - ### 실습 진행(jupyer nb)
 
+  - [Github : 1-3](https://github.com/pjw74/HTTP_Study/blob/main/1-3.ipynb)
+
 <br>
 <br>
 
@@ -133,7 +135,7 @@
 
 - ### 실습 진행(jupyer nb)
 
-  - [1-3](https://github.com/pjw74/HTTP_Study/blob/main/1-3.ipynb)
+[Github : 1-4](https://github.com/pjw74/HTTP_Study/blob/main/1-4.ipynb)
 
   <br>
   <br>
@@ -172,12 +174,15 @@
 
 - ### 실습 진행(jupyer nb)
 
+  - [Github : 2-2](https://github.com/pjw74/HTTP_Study/blob/main/2-2.ipynb)
+
 <br>
 <br>
 
 ## <u>2-3. 원하는 요소 가져오기 I</u>
 
 - ### 실습 진행(jupyer nb)
+  - [Github : 2-3](https://github.com/pjw74/HTTP_Study/blob/main/2-3.ipynb)
 
 <br>
 <br>
