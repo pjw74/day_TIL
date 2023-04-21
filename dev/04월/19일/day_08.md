@@ -120,6 +120,45 @@
 - 실제 예제와 좀 달라서 헤맸지만 XPATH로 완료
 - 참고 : [Selenium](https://www.selenium.dev/documentation/webdriver/elements/finders/)
 
+<br>
+<br>
+<br>
+
+## <u>준비운동. Appendix Jupyter Lab 시작하기</u>
+
+- Jupyter Lab
+  - 다양한 Text Editor, IDE 등을 통해 개발 진행
+  - Interactive한 Python 코드 작성 / 공유를 위한 개발 도구
+    - 데엔/인공지능 주로 사용
+  - 터미널 환경에서 pip 이용
+  - 기본적인 2가지 모드(명령:command, 입력모드:edit, 모드 변경 단축키: **Enter, ESC**)
+  - Code cell, MarkDown cell, 모드 변경 단축키: **M, Y**
+  - Cell 추가 명령모드에서 위에 생성 Above, 밑에 Below, 단축키: **A, B**
+  - Cell 삭제, 되돌리기, 단축키: **dd, z**
+  - 현재 Cell 실행, 단축키: **ctrl/cmd + Enter**
+
+<br>
+
+- MarkDown: 일반 텍스트 서식이 있는 문서 사용 가능
+
+  1. Header(#,##,###,...6개 까지)
+  2. Italic(_..._,_..._)
+  3. Bold(**...**,**...\_**)
+  4. Strikethrough(~...~)
+  5. Unordered List(-..., \*...)
+  6. Ordered List(1. ..,2. ..)
+  7. Code
+
+  ```python
+  print("hello")
+  ```
+
+  8. 줄바꿈: 행 끝에서 스페이스 2번
+
+  - ### 실습 진행(jupyer nb)
+
+    - [Github : 3-6](https://github.com/pjw74/Web_Crawling/blob/main/3-6.%20Appendix.%20Jupyter%20Lab%20%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0.ipynb)
+
   <br>
   <br>
   <br>

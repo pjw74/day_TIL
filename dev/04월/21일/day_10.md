@@ -17,37 +17,25 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-![ex_screenshot](./img/1.PNG)
-
-<br>
+## <u>4-5. 워드클라우드 만들기</u>
 
 - ### 실습 진행(jupyer nb)
 
-  - [Github : 4-1](https://github.com/pjw74/HTTP_Study/blob/main/4-1.%20%EC%8B%9C%EA%B0%81%ED%99%94%20%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%20Seaborn.ipynb)
+  - [Github : 4-5](https://github.com/pjw74/Web_Crawling/blob/main/4-5.%20%EC%9B%8C%EB%93%9C%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20-%20%ED%95%B4%EC%8B%9C%EC%BD%94%EB%93%9C%20%EC%A7%88%EB%AC%B8%20%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%9A%94%EC%95%BD.ipynb)
 
-- Keyword: matplotlib, Seaborn, lineplot(x,y), barplot(x,y)
+- Keyword: konlpy, WordCloud, Counter, Hannanum
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ---
 
