@@ -201,31 +201,6 @@ from polls.models import *
 <br>
 <br>
 
-## <u>10. Django Shell - 레코드 생성하기</u>
-
-- ### 실습 진행(VScode)
-
-  - [Github : 9]()추가추가
-
-<br>
-
-- Django Shell: shell을 통해 값을 추가
-
-```python
-from polls.models import *
->>> q3 = Question(question_text = "abc")
->>> q3.save()
-
->>> q3.choice_set.create(choice_text='a')
-
->>> choice_c = Choice(choice_text='c', question=q3)
-
-```
-
-<br>
-<br>
-<br>
-
 ## <u>11. Django Shell - 레코드 수정 및 삭제 하기</u>
 
 - ### 실습 진행(VScode)
@@ -253,3 +228,134 @@ from polls.models import *
 <br>
 <br>
 <br>
+
+## <u>12. Django Shell - 모델 필터링(Model Filtering)</u>
+
+- ### 실습 진행(VScode)
+
+  - [Github : 9]()추가추가
+
+<br>
+
+- Django Shell: shell을 통해 값을 추가
+
+<br>
+<br>
+
+```python
+from polls.models import *
+>>> q3 = Question(question_text = "abc")
+>>> q3.save()
+
+>>> q3.choice_set.create(choice_text='a')
+
+>>> choice_c = Choice(choice_text='c', question=q3)
+
+```
+
+<br>
+<br>
+<br>
+
+## <u>13. 모델 필터링 (Model Filtering) 2</u>
+
+- ### 실습 진행(VScode)
+
+  - [Github : 9]()추가추가
+
+<br>
+
+- Django Shell: shell을 통해 값을 추가
+
+<br>
+<br>
+
+```python
+from polls.models import *
+>>> q3 = Question(question_text = "abc")
+>>> q3.save()
+
+>>> q3.choice_set.create(choice_text='a')
+
+>>> choice_c = Choice(choice_text='c', question=q3)
+
+```
+
+<br>
+<br>
+<br>
+
+## <u>14. Django 모델 관계기반 필터링</u>
+
+- ### 실습 진행(VScode)
+
+  - [Github : 9]()추가추가
+
+<br>
+
+- Django Shell: shell을 통해 값을 추가
+
+<br>
+<br>
+
+```python
+from polls.models import *
+>>> q3 = Question(question_text = "abc")
+>>> q3.save()
+
+>>> q3.choice_set.create(choice_text='a')
+
+>>> choice_c = Choice(choice_text='c', question=q3)
+
+```
+
+<br>
+<br>
+<br>
+
+## <u>15. Django Shell - 모델 메소드</u>
+
+- ### 실습 진행(VScode)
+
+  - [Github : 9]()추가추가
+
+<br>
+
+- Django Shell: shell을 통해 값을 추가
+
+<br>
+<br>
+
+```python
+from polls.models import *
+>>> q3 = Question(question_text = "abc")
+>>> q3.save()
+
+>>> q3.choice_set.create(choice_text='a')
+
+>>> choice_c = Choice(choice_text='c', question=q3)
+
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+---
+
+**1. 이론 강의 추가할 부분 추가 진행**
+
+- 추가할 부분: day 02 ~ 06까지 확인
+
+**2. 선택 강의 문제 풀이 진행**
