@@ -2,9 +2,9 @@
 
 - ### 실습 진행(VScode)
 
-  - [Django : 1]()
+  - [Django : 1]()추가추가
 
-- Keyword: wordcloud 라이브러리, konlpy 라이브러리, Hannanum, JAVA_HOME 설정,
+- Keyword:
 
 <br>
 <br>
@@ -20,7 +20,7 @@
 
 - ### 실습 진행(VScode)
 
-  - [Django : 2]()
+  - [Django : 2]()추가추가
 
 <br>
 <br>
@@ -30,7 +30,7 @@
 
 - ### 실습 진행(VScode)
 
-  - [Django : 3]()
+  - [Django : 3]()추가추가
 
 - **관계형 데이터베이스(RDB)** 는 데이터를 행과 열로 이루어진 테이블의 형태로 구성하고, 테이블 간의 관계를 정의하는 데이터베이스입니다.
 - 간단한 설문조사 어플리케이션의 예시를 통해 관계형 데이터베이스에서 각각의 용어들이 어떤 의미를 가지는지 살펴본다.
@@ -64,12 +64,14 @@
   - 각 레코드는 고유한 값을 가지는 Primary Key로 식별되는데, Question 테이블에서의 Primary Key는 Question ID입니다.
 
   - 경우에 따라서 레코드들의 Question Text 내용이 중복되는 상황이 발생할 수 있지만 , 그럴때마다 Question ID를 이용하면 각 레코드를 식별할 수 있습니다.
+
     ![ex_screenshot](./img/1.PNG)
 
   ***
 
   - Choice 테이블에서는 Choice ID를 통해 각 선택지들을 식별합니다.
     그리고 foreign key인 Question ID를 통해 각 선택지 레코드들이 어떤 질문에 속한 것인지 포함관계를 나타내고 있습니다.
+
     ![ex_screenshot](./img/2.PNG)
 
   ***
@@ -84,11 +86,11 @@
 
 - ### 실습 진행(VScode)
 
-  - [Github : 4]()
+  - [Github : 4]()추가추가
 
 <br>
 
-- Keyword: wordcloud 라이브러리, konlpy 라이브러리, Hannanum, JAVA_HOME 설정,
+- Keyword:
 
 <br>
 <br>
@@ -100,7 +102,7 @@
 
 - ### 실습 진행(VScode)
 
-  - [Github : 5]()
+  - [Github : 5]()추가추가
 
 <br>
 
@@ -118,10 +120,14 @@
 
 - ### 실습 진행(VScode)
 
-  - [Github : 5]()
+  - [Github : 5]()추가추가
 
 <br>
 
 - Keyword: BooleanField, CharField, DateField, DateTimeField, FloatField, JSONField, TextField, sqlite3 환경변수 편집,
 - python 가상환경 생성: py -m venv project-name,
 - 가상환경 활성: project-name\Scripts\activate.bat
+
+<br>
+<br>
+<br>
