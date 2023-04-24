@@ -114,19 +114,141 @@
 <br>
 <br>
 
-## <u>5. 장고의 다양한 모델 필드 활용하기</u>
-
-- [Django 모델 필드](https://docs.djangoproject.com/en/4.2/ref/models/fields/)
+## <u>6. Django Admin - 관리자 계정 생성하고 접속하기</u>
 
 - ### 실습 진행(VScode)
 
-  - [Github : 5]()추가추가
+  - [Github : 6]()추가추가
 
 <br>
 
-- Keyword: BooleanField, CharField, DateField, DateTimeField, FloatField, JSONField, TextField, sqlite3 환경변수 편집,
-- python 가상환경 생성: py -m venv project-name,
-- 가상환경 활성: project-name\Scripts\activate.bat
+- Keyword: CRUD, Django Admin
+
+<br>
+<br>
+<br>
+
+## <u>7. Django Admin - 모델 등록하기</u>
+
+- ### 실습 진행(VScode)
+
+  - [Github : 7]()추가추가
+
+<br>
+
+- Keyword: CRUD, Django Admin
+
+<br>
+<br>
+<br>
+
+## <u>8. Django Shell 사용하기</u>
+
+- ### 실습 진행(VScode)
+
+  - [Github : 8]()추가추가
+
+<br>
+
+- Keyword: Django Shell: python manage.py shell, Question.objects.all()
+
+<br>
+<br>
+<br>
+
+## <u>9. Django Shell - 현재 시간 구하기</u>
+
+- ### 실습 진행(VScode)
+
+  - [Github : 9]()추가추가
+
+<br>
+
+- Django Shell:
+  - from datetime import datetime
+    - datetime.now()
+      - datetime.datetime(2023, 4, 24, 18, 51, 6, 173891)
+  - from django.utils import timezone
+    - timezone.now()
+      - datetime.datetime(2023, 4, 24, 9, 51, 28, 42511, tzinfo=datetime.timezone.utc)
+
+<br>
+<br>
+<br>
+
+## <u>10. Django Shell - 레코드 생성하기</u>
+
+- ### 실습 진행(VScode)
+
+  - [Github : 9]()추가추가
+
+<br>
+
+- Django Shell: shell을 통해 값을 추가
+
+```python
+from polls.models import *
+>>> q3 = Question(question_text = "abc")
+>>> q3.save()
+
+>>> q3.choice_set.create(choice_text='a')
+
+>>> choice_c = Choice(choice_text='c', question=q3)
+
+```
+
+<br>
+<br>
+<br>
+
+## <u>10. Django Shell - 레코드 생성하기</u>
+
+- ### 실습 진행(VScode)
+
+  - [Github : 9]()추가추가
+
+<br>
+
+- Django Shell: shell을 통해 값을 추가
+
+```python
+from polls.models import *
+>>> q3 = Question(question_text = "abc")
+>>> q3.save()
+
+>>> q3.choice_set.create(choice_text='a')
+
+>>> choice_c = Choice(choice_text='c', question=q3)
+
+```
+
+<br>
+<br>
+<br>
+
+## <u>11. Django Shell - 레코드 수정 및 삭제 하기</u>
+
+- ### 실습 진행(VScode)
+
+  - [Github : 9]()추가추가
+
+<br>
+
+- Django Shell: shell을 통해 값을 추가
+
+<br>
+<br>
+
+```python
+from polls.models import *
+>>> q3 = Question(question_text = "abc")
+>>> q3.save()
+
+>>> q3.choice_set.create(choice_text='a')
+
+>>> choice_c = Choice(choice_text='c', question=q3)
+
+```
 
 <br>
 <br>
