@@ -4,6 +4,10 @@
 
 - _Deserilaizer_: **JSON 형식**의 데이터를 정의된 포맷에 맞추어 다시 **모델 인스턴스**로 **변환**하는 작업
 
+  ![this_screenshot](./img/1.PNG)
+
+  ***
+
 <br>
 <br>
 <br>
