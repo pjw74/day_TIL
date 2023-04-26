@@ -383,6 +383,7 @@ class QuestionDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.
 
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
+# *args, **kwargs 링크 확인
 ```
 
 - polls_api/urls.py
@@ -395,6 +396,7 @@ urlpatterns = [
     path('question/', QuestionList.as_view(), name='question-list'),
     path('question/<int:pk>/', QuestionDetail.as_view(), name='question-detail'),
 ]
+# <int:id> -> <int:pk> 변경
 ```
 
 <br>
@@ -418,6 +420,16 @@ class QuestionDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
 ```
+
+### **Summary**: HTTP Methods -> Class 기반의 뷰(Views) -> Mixin -> Generic API View로 코드 축소 및 함수 사용법 학습
+
+<br>
+
+[\[\*args, \*\*kwargs\]](https://brunch.co.kr/@princox/180)
+
+<br>
+
+- 전체 코드 복습할 것
 
 <br>
 <br>
