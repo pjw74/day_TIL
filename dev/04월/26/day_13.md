@@ -123,6 +123,8 @@ class QuestionSerializer(serializers.ModelSerializer):
         fields = ['id','question_text', 'pub_date']
 ```
 
+- Django Shell
+
 ```python
 >>> from polls.polls_api.serializers import QuestionSerializer
 >>> print(QuestionSerializer())
