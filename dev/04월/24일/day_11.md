@@ -216,12 +216,8 @@ from polls.models import *
 
 ```python
 from polls.models import *
->>> q3 = Question(question_text = "abc")
->>> q3.save()
 
->>> q3.choice_set.create(choice_text='a')
 
->>> choice_c = Choice(choice_text='c', question=q3)
 
 ```
 
@@ -243,13 +239,16 @@ from polls.models import *
 <br>
 
 ```python
+
 from polls.models import *
->>> q3 = Question(question_text = "abc")
->>> q3.save()
 
->>> q3.choice_set.create(choice_text='a')
 
->>> choice_c = Choice(choice_text='c', question=q3)
+
+
+
+
+
+
 
 ```
 
@@ -271,13 +270,8 @@ from polls.models import *
 <br>
 
 ```python
-from polls.models import *
->>> q3 = Question(question_text = "abc")
->>> q3.save()
 
->>> q3.choice_set.create(choice_text='a')
 
->>> choice_c = Choice(choice_text='c', question=q3)
 
 ```
 
@@ -293,19 +287,15 @@ from polls.models import *
 
 <br>
 
-- Django Shell: shell을 통해 값을 추가
+- Django Shell:
 
 <br>
 <br>
 
 ```python
-from polls.models import *
->>> q3 = Question(question_text = "abc")
->>> q3.save()
+>>> Question.objects.filter(question_text__contains='휴가')
+>>> Choice.objects.filter(votes__gt=0).query
 
->>> q3.choice_set.create(choice_text='a')
-
->>> choice_c = Choice(choice_text='c', question=q3)
 
 ```
 
@@ -321,19 +311,15 @@ from polls.models import *
 
 <br>
 
-- Django Shell: shell을 통해 값을 추가
+- Django Shell:
 
 <br>
 <br>
 
 ```python
-from polls.models import *
->>> q3 = Question(question_text = "abc")
->>> q3.save()
 
->>> q3.choice_set.create(choice_text='a')
 
->>> choice_c = Choice(choice_text='c', question=q3)
+
 
 ```
 
