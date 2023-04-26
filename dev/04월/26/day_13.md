@@ -72,6 +72,9 @@
 - 데이터 조회(Read) : **GET**
 - 데이터 업데이트(Update) : **PUT**
 - 데이터 삭제(Delete) : **DELETE**
+  - 크롬 - 개발자 도구(Network항목)를 사용하여 Request Method로 확인 가능
+
+<br>
 
 <br>
 <br>
@@ -79,13 +82,13 @@
 
 ## <u>6. POST</u>
 
-- _Serilaizer_: **모델 인스턴스**나 **QuerySet**과 같은 데이터를 **JSON 형식의 파일**로 **변환**하는 작업
-
-- _Deserilaizer_: **JSON 형식**의 데이터를 정의된 포맷에 맞추어 다시 **모델 인스턴스**로 **변환**하는 작업
-
-  ![this_screenshot](./img/1.PNG)
-
-  ***
+- 200번대: 정상적인 결과
+  - 200 OK
+  - 201 CREATED
+- 400번대: 사용자의 잘못된 요청
+  - 400 BAD REQUEST
+  - 404 NOT FOUND
+- 500번대: 서버 내부의 오류
 
 <br>
 <br>
