@@ -293,7 +293,6 @@ class QuestionDetail(generics.RetrieveUpdateDestroyAPIView):
 <br>
 <br>
 <br>
-<br>
 
 ## <u>6. perform_create()</u>
 
@@ -341,184 +340,34 @@ OrderedDict([('question_text', 'some text')])
 <br>
 <br>
 
-## <u>7. PUT / DELETE</u>
+## <u>7. Postman 설치하기 for Windows</u>
 
-- polls_api/views.py
+- **POSTMAN**은 RESTful API 테스트를 위한 플랫폼
+  1. 다양한 HTTP 요청을 보내고 응답 결과를 쉽게 확인할 수 있도록 도와줌.
+  2. API 요청과 응답 결과를 저장하고 공유할 수 있는 기능 제공.
 
-```python
-from django.shortcuts import get_object_or_404
+<br>
+<br>
+<br>
 
-@api_view(['GET', 'PUT', 'DELETE'])
-def question_detail(request, id):
-    question = get_object_or_404(Question, pk=id)
-
-    if request.method == 'GET':
-        serializer = QuestionSerializer(question)
-        return Response(serializer.data)
-
-    if request.method == 'PUT':
-        serializer = QuestionSerializer(question, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    if request.method == 'DELETE':
-        question.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-```
+## <u>8. </u>
 
 - polls_api/urls.py
 
 ```python
-from django.urls import path
-from .views import *
 
-urlpatterns = [
-    path('question/', question_list, name='question-list'),
-    path('question/<int:id>/', question_detail, name='question-detail')
-]
+
 ```
 
 <br>
 <br>
 <br>
 
-## <u>8. Class 기반의 뷰(Views)</u>
-
-- polls_api/views.py
-
-```python
-from rest_framework.views import APIView
-
-class QuestionList(APIView):
-    def get(self, request):
-        questions = Question.objects.all()
-        serializer = QuestionSerializer(questions, many=True)
-        return Response(serializer.data)
-
-    def post(self, request):
-        serializer = QuestionSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-class QuestionDetail(APIView):
-    def get(self, request, id):
-        question = get_object_or_404(Question, pk=id)
-        serializer = QuestionSerializer(question)
-        return Response(serializer.data)
-
-    def put(self, request, id):
-        question = get_object_or_404(Question, pk=id)
-        serializer = QuestionSerializer(question, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, id):
-        question = get_object_or_404(Question, pk=id)
-        question.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-```
-
-- polls_api/urls.py
-
-```python
-from django.urls import path
-from .views import *
-
-urlpatterns = [
-    path('question/', QuestionList.as_view(), name='question-list'),
-    path('question/<int:id>/', QuestionDetail.as_view(), name='question-detail'),
-]
-```
+**<특강>** - ppt 참고 작성(github)
 
 <br>
 <br>
 <br>
-
-## <u>9. Mixin</u>
-
-- polls_api/views.py
-
-```python
-from polls.models import Question
-from polls_api.serializers import QuestionSerializer
-from rest_framework import mixins
-from rest_framework import generics
-
-class QuestionList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
-    queryset = Question.objects.all()
-    serializer_class = QuestionSerializer
-
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-
-class QuestionDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
-    queryset = Question.objects.all()
-    serializer_class = QuestionSerializer
-
-    def get(self, request, *args, **kwargs):
-        return self.retrieve(request, *args, **kwargs)
-
-    def put(self, request, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
-# *args, **kwargs 링크 확인
-```
-
-- polls_api/urls.py
-
-```python
-from django.urls import path
-from .views import *
-
-urlpatterns = [
-    path('question/', QuestionList.as_view(), name='question-list'),
-    path('question/<int:pk>/', QuestionDetail.as_view(), name='question-detail'),
-]
-# <int:id> -> <int:pk> 변경
-```
-
-<br>
-<br>
-<br>
-
-## <u>10. Generic API View</u>
-
-- polls_api/views.py
-
-```python
-from polls.models import Question
-from polls_api.serializers import QuestionSerializer
-from rest_framework import generics
-
-class QuestionList(generics.ListCreateAPIView):
-    queryset = Question.objects.all()
-    serializer_class = QuestionSerializer
-
-class QuestionDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Question.objects.all()
-    serializer_class = QuestionSerializer
-```
-
-<br>
-<br>
-<br>
-
-<특강> - ppt 참고 작성(github)
 
 <br>
 <br>
@@ -526,18 +375,14 @@ class QuestionDetail(generics.RetrieveUpdateDestroyAPIView):
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
 
-### **Summary**: HTTP Methods -> Class 기반의 뷰(Views) -> Mixin -> Generic API View로 코드 축소 및 함수 사용법 학습
+### **Summary**: 회원 추가, 관리, Serializer, 상속&오버라이딩 학습
 
 <br>
-
-- [\[\*args, \*\*kwargs\]](https://brunch.co.kr/@princox/180)
 
 - [실습 링크](https://github.com/pjw74/DjangoProject/tree/main/mysite)
 
+- [상속&오버라이딩 링크](https://heytech.tistory.com/109)
 - 전체 코드 복습할 것
 
 <br>

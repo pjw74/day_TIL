@@ -425,7 +425,7 @@ class QuestionDetail(generics.RetrieveUpdateDestroyAPIView):
 <br>
 <br>
 
-<특강> - ppt 참고 작성(github)
+**<특강>** - ppt 참고 작성(github)
 
 <br>
 <br>
