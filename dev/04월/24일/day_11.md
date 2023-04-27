@@ -112,7 +112,7 @@ urlpatterns = [
 
 <br>
 
-- _Keyword_: Django 설치 및 가상환경 세팅
+- _Keyword_:
 
 <br>
 <br>
