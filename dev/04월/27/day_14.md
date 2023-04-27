@@ -342,14 +342,25 @@ OrderedDict([('question_text', 'some text')])
 <br>
 <br>
 
-## <u>8. </u>
+## <u>8. POSTMAN</u>
 
-- polls_api/urls.py
+![ex_screenshot](./img/1.PNG)
 
-```python
+---
 
+![ex_screenshot](./img/2.PNG)
 
-```
+---
+
+1. 보낼 requst 선택, url 넣고
+2. Headers -> key: Content-type -> value: application/json
+3. Send
+4. 로그인 권한 얻기 -> 해당 url 개발자 모드(Application -> Cookie)
+   1. 로그인 한 상태에서 X-CSRFToken, Cookie 설정
+
+- 여러가지 요청을 저장해뒀다가 쉽게 재현해서 사용 가능!!
+
+  ![ex_screenshot](./img/3.PNG)
 
 <br>
 <br>
@@ -392,10 +403,6 @@ my_dog = Dog("초코")
 print(my_dog.name)  # 출력: 초코
 print(my_dog.speak())  # 출력: 멍멍!
 ```
-
-<br>
-<br>
-<br>
 
 <br>
 <br>
