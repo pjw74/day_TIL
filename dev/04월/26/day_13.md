@@ -421,13 +421,29 @@ class QuestionDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = QuestionSerializer
 ```
 
+<br>
+<br>
+<br>
+
+<특강> - ppt 참고 작성(github)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ### **Summary**: HTTP Methods -> Class 기반의 뷰(Views) -> Mixin -> Generic API View로 코드 축소 및 함수 사용법 학습
 
 <br>
 
-[\[\*args, \*\*kwargs\]](https://brunch.co.kr/@princox/180)
+- [\[\*args, \*\*kwargs\]](https://brunch.co.kr/@princox/180)
 
-<br>
+- [실습 링크](https://github.com/pjw74/DjangoProject/tree/main/mysite)
 
 - 전체 코드 복습할 것
 
