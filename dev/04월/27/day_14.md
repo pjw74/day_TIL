@@ -1,9 +1,5 @@
 ## <u>1. User 추가하기</u>
 
-![this_screenshot](./img/1.PNG)
-
----
-
 - polls/models.py
 
 ```python
@@ -99,7 +95,6 @@ urlpatterns = [
 ## <u>3. Form을 사용하여 User 생성하기</u>
 
 - polls/views.py
--
 
 ```python
 from django.views import generic
@@ -289,8 +284,6 @@ class QuestionDetail(generics.RetrieveUpdateDestroyAPIView):
 ```
 
 <br>
-
-<br>
 <br>
 <br>
 
@@ -314,7 +307,6 @@ class QuestionDetail(generics.RetrieveUpdateDestroyAPIView):
 
 - 구현하다 중복, 모르겠으면 ${\color{red}부모\space 클래스들을\space 들여다\space 볼\space 것}$
 
-<br>
 <br>
 <br>
 
@@ -385,17 +377,6 @@ OrderedDict([('question_text', 'some text')])
 - [상속&오버라이딩 링크](https://heytech.tistory.com/109)
 - 전체 코드 복습할 것
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 <br>
