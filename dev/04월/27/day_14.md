@@ -357,6 +357,46 @@ OrderedDict([('question_text', 'some text')])
 
 **<특강>** - ppt 참고 작성(github)
 
+- ㅇㅇ
+
+<br>
+<br>
+<br>
+
+## <u>상속(Inheritance) 과 오버라이딩(Overriding )</u>
+
+- 자신의 메소드와 속성을 물려주는 클래스를 **부모 클래스(Parent Class)** 또는 **상위 클래스(Super class)** 라고 지칭
+- 반대로 그것을 물려받아서 사용하는 클래스는 **자식 클래스(Child Class)** 또는 **하위 클래스(Sub Class)** 라고 부릅니다.
+
+- 파이썬에서 상속을 구현하기 위한 방법은
+  - 자식 클래스의 괄호 안에 부모 클래스를 명시하는 것 입니다.
+
+1. 자식 클래스에서는 부모 클래스의 모든 메서드와 속성을 자유롭게 사용 가능하며,
+2. 새로운 메서드를 추가하거나 기존 메서드의 내용을 변경 가능.
+
+ex) 다음은 부모 클래스인 Animal 클래스를 정의하고, 자식 클래스인 Dog 클래스가 Animal 클래스를 상속받도록 구현하는 예시코드입니다.
+
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        return "동물이 울음소리를 냅니다"
+
+class Dog(Animal):
+    def speak(self):
+        return "멍멍!"
+
+my_dog = Dog("초코")
+print(my_dog.name)  # 출력: 초코
+print(my_dog.speak())  # 출력: 멍멍!
+```
+
+<br>
+<br>
+<br>
+
 <br>
 <br>
 <br>
