@@ -459,7 +459,6 @@ coverage run manage.py test
 
 - [실습 링크](https://github.com/pjw74/DjangoProject/tree/main/mysite)
 
-- [상속&오버라이딩 링크](https://heytech.tistory.com/109)
 - 전체 코드 복습할 것
 
 <br>
