@@ -1,12 +1,18 @@
 ## <u>마약기사 시각화 프로젝트</u>
 
+- 1~5일까지 추가 작성 확인
+
 - ### 웹 페이지 구현
 
   - apps/web_pages
 
   <br>
 
+- 로컬, 원격 branch 일치 명령어
+
+```
 git remote prune origin
+```
 
 - [git push 사용법/팁](https://www.daleseo.com/git-push/)
 - [git 입문](https://backlog.com/git-tutorial/kr/stepup/stepup2_4.html)
