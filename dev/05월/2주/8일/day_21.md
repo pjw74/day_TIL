@@ -209,7 +209,52 @@
 
   - Amazon Alexa
     - Amazon's voice bot platform
-  - ## Amazon Connect
+  - Amazon Connect
+    - Amazon's Contact Center Solution
+    - 콜센터 구현이 아주 쉬워짐
+  - Lambda
+    - Event-driven, serverless compution engine
+    - 서비스 구현을 위해서 EC2를 론치할 필요가 없음
+    - Google Cloud에는 Cloud Function이란 이름으로 존재
+    - Azure에는 Azure Function이란 이름으로 존재
+
+- ### <u>Redshift</u>
+
+  - Scalable SQL 엔진(1)
+  - 2 PB까지 지원
+  - Still OLAP
+    - 응답속도가 빠르지 않기 때문에 프로덕션 데이터베이스로 사용불가
+  - Columnar storage
+    - 컬럼별 압축이 가능
+    - 컬럼을 추가하거나 삭제하는 것이 아주 빠름
+  - 벌크 업데이트 지원
+    - 레코드가 들어있는 파일을 S3로 복사 후 COPY 커맨드로 Redshift로 일괄 복사
+  - **고정 용량/비용** SQL 엔진
+    - vs. Snowflake(Cloud와 관계 없이 사용 가능) vs. BigQuery
+  - 다른 데이터 웨어하우스처럼 primary key uniqueness를 보장하지 않음(개발자가 pk보장 작업을 해야 함)
+    - 프로덕션 데이터베이스들은 보장함
+  - Redshift는 Postgresql 8.x와 SQL이 호환됨
+    - 하지만 Postgresql 8.x의 모든 기능을 지원하지는 않음
+      - 예를 들어 text 타입이 존재하지 않음
+    - Postgresql 8.x를 지원하는 툴이나 라이브러리로 액세스 가능
+      - JDBC/ODBC
+    - 다시 한번 SQL이 메인 언어라는 점 명심
+      - 그러기에 테이블 디자인이 아주 중요하다.
+    - Redshift Options and Pricing
+      - Dense Storage
+      - Dense Compute
+      - Managed Storage
+  - #### <u>Redshift Schema (폴더) 구성</u>
+
+    ![ex-image](./img/5.PNG)
+
+    - admin 권한 가진 사람만 가능
+
+```SQL
+CREATE SCHEMA raw_data;
+CREATE SCHEMA analytics;
+CREATE SCHEMA adhoc;
+```
 
 <br>
 <br>
