@@ -76,6 +76,7 @@
         - DELETE FROM은 조건에 맞는 레코드들을 지움(테이블 자체는 존재)
 
   - SQL DDL - 테이블 구조 정의 언어 (3)
+
     - ALTER TABLE
       - 새로운 컬럼 추가:
         - ALTER TABLE 테이블이름 ADD COLUMN 필드이름 필드타입;
@@ -86,7 +87,7 @@
       - 테이블 이름 변경:
         - ALTER TABLE 현재테이블이름 RENAME to 새테이블이름;
 
-  <br>
+    <br>
 
   - SQL DML - 테이블 데이터 조작 언어 (1)
     - 레코드 질의 언어: SELECT
@@ -97,12 +98,11 @@
         - DAU, WAU, MAU 계산은 GROUP BY를 필요로 함
       - ORDER BY를 사용해서 레코드 순서를 결정하기도 함
       - 보통 다수의 테이블의 조인해서 사용하기도 함
-  - SQL DML - 테이블 데이터 조작 언어 (2)
-    - 레코드 수정 언어:
-      - INSERT INTO: 테이블에 레코드를 추가하는데 사용
-      - UDATE FROM: 테이블 레코드의 필드 값 수정
-      - DELETE FROM: 테이블에서 레코드를 삭제
-        - vs TRUNCATE
+  - SQL DML - 테이블 데이터 조작 언어 (2) - 레코드 수정 언어: - INSERT INTO: 테이블에 레코드를 추가하는데 사용 - UDATE FROM: 테이블 레코드의 필드 값 수정 - DELETE FROM: 테이블에서 레코드를 삭제 - vs TRUNCATE
+
+<br>
+<br>
+<br>
 
 ## <u>SQL_Analysis_Day 2-2</u>
 
@@ -264,7 +264,10 @@ FROM raw_data.user_session_channel;
   - cast 함수를 사용
     - cast(category as float)
 
-- ## [실습진행 Colab](https://colab.research.google.com/drive/16ktj-VMLHWTdBF1o87ROBq-dOe-xjVbw#scrollTo=mPtvJEvubNoV)
+<br>
+<br>
+
+## 실습진행 Colab
 
 <br>
 <br>
