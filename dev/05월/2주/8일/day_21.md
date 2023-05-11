@@ -1,6 +1,6 @@
 ## <u>SQL_Analysis_Day 1-1</u>
 
-- 내용 추가
+- 내용 추가 필
 
 <br>
 <br>
