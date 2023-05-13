@@ -125,12 +125,101 @@
 
 ## <u>SQL_Analysis_Day 3-2</u>
 
-## 실습진행 Colab
+### 실습진행 Colab
+
+<br>
+
+- #### CTAS: SELECT를 가지고 테이블 생성
+
+  - 간단하게 새로운 테이블을 만드는 방법
+  - 자주 조인하는 테이블들이 있다면 이를 CTAS를 사용해서 조인해두면 편리해짐
+
+  ```SQL
+  DROP TABLE IF EXISTS adhoc.jungwoo_session_summary;
+  CREATE TABLE adhoc.jungwoo_session_summary AS
+  SELECT B.*, A.ts FROM raw_data.session_timestamp A
+  JOIN raw_data.user_session_channel B ON A.sessionid = B.sessionid;
+  ```
+
+  - 월별 유니크한 사용자 수를 다시 풀어보기
+
+  ```SQL
+  SELECT
+    TO_CHAR(ts,'YYYY-MM') AS month,
+    COUNT(DISTINCT userid) AS mau
+  FROM adhoc.jungwoo_session_summary
+  GROUP BY 1
+  ORDER BY 1 DESC;
+  ```
+
+<br>
+
+- #### 항상 시도해봐야하는 데이터 품질 확인 방법들
+
+  - 중복된 레코드들 체크하기
+  - 최근 데이터의 존재 여부 체크하기 (freshness)
+  - Primary key uniqueness가 지켜지는지 체크하기
+  - 값이 비어있는 (중요한)컬럼들이 있는지 체크하기
+
+  - 중복된 레코드들 체크하기 (1)
+
+    - 다음 두개의 카운트를 비교
+
+    ```SQL
+    SELECT COUNT(1)
+    FROM adhoc.jungwoo_session_summary;
+
+    SELECT COUNT(1)
+    FROM (
+      SELECT DISTINCT userId, sessionId, ts, channel
+      FROM adhoc.jungwoo_session_summary
+    );
+    ```
+
+  - 중복된 레코드들 체크하기 (2)
+
+    - CTE를 사용해서 중복 제거 후 카운트 해보기(재사용 가능한 임시 테이블 생성)
+
+    ```SQL
+    With ds AS (
+      SELECT DISTINCT userId, sessionId, ts, channel
+      FROM adhoc.jungwoo_session_summary
+    )
+    SELECT COUNT(1)
+    FROM ds;
+    ```
+
+  - 최근 데이터의 존재 여부 체크하기 (freshness)
+
+    ```SQL
+    SELECT MIN(ts), MAX(ts)
+    FROM adhoc.jungwoo_session_summary;
+    ```
+
+  - Primary key uniqueness가 지켜지는지 체크하기
+
+    ```SQL
+    SELECT sessionId, COUNT(1)
+    FROM adhoc.jungwoo_session_summary
+    GROUP BY 1
+    ORDER BY 2 DESC
+    LIMIT 1;
+    ```
+
+  - 값이 비어있는 (중요한)컬럼들이 있는지 체크하기
+    ```SQL
+    SELECT
+      COUNT(CASE WHEN sessionId is NULL THEN 1 END) sessionid_null_count,
+      COUNT(CASE WHEN userId is NULL THEN 1 END) userid_null_count,
+      COUNT(CASE WHEN ts is NULL THEN 1 END) ts_null_count,
+      COUNT(CASE WHEN channel is NULL THEN 1 END) channel_null_count
+    FROM adhoc.jungwoo_session_summay;
+    ```
+
+### 실습진행 Colab
 
 <br>
 <br>
-
-- ![ex-image](./img/1.PNG)
 
 <br>
 <br>
@@ -159,8 +248,6 @@
 
 <br>
 
-- [실습 링크](https://github.com/pjw74/DjangoProject/tree/main/mysite)
-
 - 전체 코드 복습할 것
 
 <br>
@@ -169,12 +256,3 @@
 <br>
 <br>
 <br>
-
----
-
-**1. 이론 강의 추가할 부분 추가 진행**
-
-- 추가할 부분: day 02~06까지 확인
-- 보충: day 07~13
-
-**2. 선택 강의 문제 풀이 진행**
