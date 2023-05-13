@@ -220,39 +220,6 @@
 
 <br>
 <br>
-
-<br>
-<br>
-<br>
-<br>
-
-- **Keyword**:
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-### **Summary**:
-
-<br>
-
-- 전체 코드 복습할 것
-
-<br>
-<br>
-<br>
 <br>
 <br>
 <br>
