@@ -45,7 +45,7 @@
 
 ## <u>05 RDS</u>
 
-### 실습: AWS CLI
+### 실습: AWS 콘솔: RDS
 
 - RDS 서브넷 그룹 생성 -> 이름 -> 가용 영역: a,c -> 서브넷: private설정
 - RDS 데이터베이스 생성 -> Virtual Private Cloud(VPC) 설정 -> DB 서브넷 그룹 설정 -> 기존 VPC 보안 그룹 -> 생성
@@ -67,7 +67,71 @@
 
 ## <u>06 Front</u>
 
-### 실습: AWS CLI
+### 실습: AWS CLI: 버킷
+
+1. 도메인 이름 맞추고, 정적 웹 사이트 호스팅 편집 활성화
+2. npx create-react-app ciron-app
+3. npm start
+4. npm run build
+5. npm install -g serve
+6. serve -s build
+7. 업로드 -> build 안에 있는 것 모두
+8. 관리 -> 편집 -> 퍼블릭 액세스 차단 해제
+9. 버킷 정책 편집 -> Pricipal: \*
+10. ARN 복사 후 + /\*
+11. JSON 정책 복붙
+12. 버킷 웹 사이트 앤드포인트로 접속
+
+<br>
+<br>
+<br>
+
+## <u>07 CI/CD</u>
+
+### 실습: AWS CLI: CodePipeline
+
+1. 파이프라인 생성 -> ciron-prod-pipeline -> Github 연동
+2. 리포지토리, 브랜치 선택
+3. AWS CodeBuild
+4. 프로젝트 빌드 -> Buildspec 내
+
+   ```
+   phases:
+   ...
+     build:
+       command:
+         - ./gradlew build
+   ...
+   artifacts:
+     files:
+       - '**/*'
+   ```
+
+5. 배포 공급자 - private -> AWS CodeDeploy, ELB
+6. 개발자 도구 -> CodeDeploy -> 애플리케이션 -> ELB 생성
+7. 역할 선택
+8. root에 appspec.yml 추가
+   ```
+   version: 0.0
+   os: linux
+   files:
+     - source: /
+       destination: /home/ec2-user/build/
+   ```
+
+<br>
+<br>
+<br>
+
+## <u>08 Route53</u>
+
+### 실습: AWS CLI: Route53
+
+1. 도메인 등록 -> 다른 데서 구입했으면 DNS: 호스팅 영역 생성
+2. NS(Name Server 교체)
+3. CloudFront 설정
+4. SSL 인증서 요청
+5. Route53 레코드 생성
 
 <br>
 <br>
@@ -75,12 +139,6 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-
-| ![ex-image](./img/1.PNG) | ![ex-image](./img/2.PNG) |
-| ------------------------ | ------------------------ |
-
 <br>
 <br>
 <br>
@@ -92,15 +150,6 @@
 
 - **Keyword**:
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 <br>
