@@ -423,8 +423,6 @@ GROUP BY 1;
 <br>
 <br>
 
-### 특강: [유데미 데이터 거버넌스 여정, ] (feat. max)
-
 <br>
 <br>
 <br>
