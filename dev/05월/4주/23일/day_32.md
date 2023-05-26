@@ -227,40 +227,79 @@ GRANT ROLE staff TO ROLE manager;
       - raw_data.session_transaction
 
 - Redshift에 S3 접근 권한 설정
-  - AWS IAM(Identity and Access Management)을 이용해 이에 해당하는 역할\
-    (Role)을 만들고 이를 Redshift에 부여해야함
+
+  - AWS IAM(Identity and Access Management)을 이용해 이에 해당하는 역할(Role)을 만들고 이를 Redshift에 부여해야함
+
   1. 웹 콘솔에서 IAM
   2. Roles - Create Role
   3. AWS service 선택 -> Redshift 선택
   4. Redshift - Customizable 선택 -> Next Permissions 버튼 클릭
-  5. Filter Policies 박스에서 AmazonS3FullAccess를 찾아서 왼쪽의 체크박스를\  
-     선택하고 Next: Tags 버튼을 클릭
-  6. Next: Review 버튼을 클릭하고 최종 이름으로 redshift.read.s3을 지정하고
-     최종 생성
+  5. Filter Policies 박스에서 AmazonS3FullAccess를 찾아서 왼쪽의 \
+     체크박스를 선택하고 Next: Tags 버튼을 클릭
+  6. Next: Review 버튼을 클릭하고 최종 이름으로 redshift.read.s3을  
+     지정하고 최종 생성
+
 - redshift.read.s3 역할을 Redshift 클러스터에 지정 (1)
+
   - Redshift 콘솔로 돌아가 해당 클러스터의 Default Namespace를 선택하고 \
     “Security and encryption” 탭 아래 “Manage IAM roles”라는 버튼을 선택
   - 여기 Manage IAM roles 박스에서 “Associate IAM roles” 메뉴를 선택하고 \
     앞서 만든 redshift.read.s3 권한을 지정하고 “Associate IAM roles” 버튼을\
     클릭한다.
 
+- COPY 명령을 사용해 앞서 CSV 파일들을 테이블로 복사 (1)
+
+  - 앞서 생성한 테이블로 앞서 S3로 로딩한 파일을 벌크 업데이트 수행
+  - 이를 위해 COPY SQL 커맨드를 사용
+
+  - CSV 파일이기에 delimiter로는 콤마(,)를 지정한다
+  - CSV 파일에서 문자열이 따옴표로 둘러싸인 경우 제거하기 위해 removequotes 지정
+  - CSV 파일의 첫번째 라인(헤더)을 무시하기 위해 “IGNOREHEADER 1”을 지정
+  - credentials에 앞서 Redshift에 지정한 Role을 사용. 이때 해당 Role의 ARN을 읽어와야함
+
+    ```SQL
+    COPY raw_data.user_session_channel
+    FROM 's3://keeyong-test-bucket/test_data/user_session_channel.csv'
+    credentials 'aws_iam_role=arn:aws:iam:xxxxxxx:role/redshift.read.s3'
+    delimiter ',' dateformat 'auto' timeformat 'auto' IGNOREHEADER 1 removequotes;
+    ```
+
+  - 만일 COPY 명령 실행 중에 에러가 나면 stl_load_errors 테이블의 내용을 보고 확인한다
+
+    ```SQL
+    SELECT * FROM stl_load_errors ORDER BY starttime DESC;
+    ```
+
+- analytics 테스트 테이블 만들기
+
+- analytics 스키마에 새로운 테이블 만들기
+
+  - raw_data에 있는 테이블을 조인해서 새로 만들기 (ELT)
+  - 간단하게는 CTAS로 가능
+
+    ```SQL
+    CREATE TABLE analytics.mau_summary AS
+    SELECT
+      TO_CHAR(A.ts, 'YYYY-MM') AS month,
+      COUNT(DISTINCT B.userid) AS mau
+    FROM raw_data.session_timestamp A
+    JOIN raw_data.user_session_channel B ON A.sessionid = B.sessionid
+    GROUP BY 1
+    ORDER BY 1 DESC;
+    ```
+
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+## <u>5강. Day 2-5/u>
+
+### 실습: AWS 웹 콘솔: Redshift, S3 colab:
+
+- 먼저 입력이 되는 CSV 파일들을 적당한 위치에 다운로드 받기
+- AWS Console S3, IAM Role 설정과 지정
+- Google Colab에서 테이블 생성후 COPY 명령 실행해보기
+
 <br>
 <br>
 <br>
