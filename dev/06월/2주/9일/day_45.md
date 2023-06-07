@@ -270,116 +270,15 @@ Production Data Jobs
   - 정해진 시간에 ETL 실행 혹은 한 ETL의 실행이 끝나면 다음 ETL 실행
 
 - 데이터 파이프라인(ETL)을 쉽게 만들 수 있도록 해줌
-
   - 다양한 데이터 소스와 데이터 웨어하우스를 쉽게 통합해주는 모듈 제공
-    - https://airflow.apache.org/docs/
-  - 데이터 파이프라인 관리 관련 다양한 기능을 제공해줌: 특히 Backfill
-
+    - http://airflow.aphache.org/docs/
+  - Backfill
 - Airflow에서는 데이터 파이프라인을 DAG(Directed Acyclic Graph)라고 부름
   - 하나의 DAG는 하나 이상의 태스크로 구성됨
-- 2020년 12월에 Airflow 2.0이 릴리스됨
-- Airflow 버전 선택 방법: 큰 회사에서 사용하는 버전이 무엇인지 확인.
-  - https://cloud.google.com/composer/docs/concepts/versioning/composer-versions
 
 <br>
 <br>
 <br>
-
-## <u>6. airflow-day1-6</u>
-
-### Airflow 구성
-
-Airflow - 총 5개의 컴포넌트로 구성
-
-1. 웹 서버 (Web Server)
-2. 스케줄러 (Scheduler)
-3. 워커 (Worker)
-4. 메타 데이터 데이터베이스
-   a. Sqlite가 기본으로 설치됨
-5. 큐 (다수서버 구성인 경우에만 사용됨)
-   a. 이 경우 Executor가 달라짐
-
-<br>
-
-Airflow 구성
-
-- 스케줄러는 DAG들을 워커들에게 배정하는 역할을 수행
-- 웹 UI는 스케줄러와 DAG의 실행 상황을 시각화해줌
-- 워커는 실제로 DAG를 실행하는 역할을 수행
-- 스케줄러와 각 DAG의 실행결과는 별도 DB에 저장됨
-  - 기본으로 설치되는 DB는 SQLite
-  - 실제 프로덕션에서는 MySQL이나 Postgres를 사용해야함
-
-Airflow 스케일링 방법
-
-- 스케일 업 (더 좋은 사양의 서버 사용)
-- 스케일 아웃 (서버 추가)
-
-Airflow 구조: 서버 한대
-
-![this_screenshot](./img/3.PNG)
-
-<br>
-
-Airflow 구조: 다수 서버
-
-![this_screenshot](./img/4.PNG)
-
-<br>
-
-Airflow 구조 다시 보기
-
-![this_screenshot](./img/5.PNG)
-
-<br>
-
-**여러종류의 Executor들**
-
-- Sequential Executor
-- Local Executor
-- Celery Executor
-- Kubernetes Executor
-- CeleryKubernetes Executor
-- Dask Executor
-
-<br>
-
-Airflow 개발의 장단점
-
-- 장점
-  - 데이터 파이프라인을 세밀하게 제어 가능
-  - 다양한 데이터 소스와 데이터 웨어하우스를 지원
-  - 백필(Backfill)이 쉬움
-- 단점
-  - 배우기가 쉽지 않음
-  - 상대적으로 개발환경을 구성하기가 쉽지 않음
-  - 직접 운영이 쉽지 않음. 클라우드 버전 사용이 선호됨
-    - GCP provides “Cloud Composer”
-    - AWS provides “Managed Workflows for Apache Airflow”
-    - Azure provides “Data Factory Managed Airflow”
-
-DAG란 무엇인가?
-
-- Directed Acyclic Graph의 줄임말
-- Airflow에서 ETL을 부르는 명칭
-- DAG는 태스크로 구성됨
-  - 예를 3개의 태스크로 구성된다면 Extract, Transform, Load로 구성
-- 태스크란? - **Airflow의 오퍼레이터(Operator)** 로 만들어짐
-  - Airflow에서 이미 다양한 종류의 오퍼레이터를 제공함
-  - 경우에 맞게 사용 오퍼레이터를 결정하거나 필요하다면 직접 개발
-  - e.g., Redshift writing, Postgres query, S3 Read/Write, Hive query, Spark job, shell script
-
-DAG의 구성 예제 (1), DAG의 구성 예제 (2)
-
-| ![this_screenshot](./img/6.PNG) | ![this_screenshot](./img/7.PNG) |
-| ------------------------------- | ------------------------------- |
-
-1-1. 3개의 Task로 구성된 DAG. \
-1-2. 먼저 t1이 실행되고 t2, t3의 순으로 일렬로 실행
-
-2-1. 3개의 Task로 구성된 DAG. \
-2-2. 먼저 t1이 실행되고 여기서 t2와 t3로 분기
-
 <br>
 <br>
 <br>
@@ -394,9 +293,6 @@ DAG의 구성 예제 (1), DAG의 구성 예제 (2)
 <br>
 
 - **Keyword**:
-  - Airflow, Backfill, DAG란(Directed Acyclic Graph), Executor
-  - ETL(Extract, Transform, Load)
-  - 데이터 레이크 (Data Lake), 데이터 웨어하우스 (Data Warehouse), Data Pipeline, DBT, 멱등성
 
 <br>
 <br>
@@ -404,3 +300,58 @@ DAG의 구성 예제 (1), DAG의 구성 예제 (2)
 <br>
 <br>
 <br>
+
+### **Summary**:
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## 팀 미팅
+
+8주차 팀 미팅
+
+**Agenda**
+
+- 건의 사항
+- QnA
+- 미니 세미나 - AWS 전반적인 내용 (EC2, VPC, Security, DB, Monitoring, Storage)
+
+- 팀원 소감
+
+  - 프로젝트 진행 후기
+  - **Airflow** 필수
+  - raw_data의 중요성
+
+- 데이터
+
+  - 공공 데이터 조회를 위한 오픈소스 파이썬 라이브러리 Github 추천
+  - 호락호락하지 않은 공공데이터와의 전쟁 유튭
+
+- QnA
+
+  - 2팀 2조: Github 레포 푸쉬
+
+- Team Rule 개선
+
+- [미니세미나] AWS Network
+
+  - AWS Network - VPC, Subnet, Endpoint, ...
+  - VPC - public 차이 ??
+    - 사용자가 정의한, 논리적으로 격리된 가상의 프라이빗 네트워크 환경
+  - VPC 서브넷
+  - Internet gateway 만들고 라우팅 테이블에 타겟팅 경로 설정
+  - 프라이빗 서브넷 / 퍼블릭 서브넷: Igw 연결 유무
+  - NAT gateway: private 서버에서 나가고 싶다. ip 치환 외부 나감, 외부에선 private 서버 접근 불가능
+  - 고정 IP/Public IP 선택
+  - VPC 액세스 제어: NACL과 보안그룹
+  - VPC Peering 기술
+  - AWS Direct Connect
+  - EndPoint 타입 종류
+
+- 미니세미나 다음 주제
+
+- 코드리뷰 세미나 질문
