@@ -1,5 +1,9 @@
 # -- Markdown --
 
+# 6. 이미지 추가
+
+![this_screenshot](./img/??.PNG)
+
 # 0. 더보기
 
 [참조 링크1]: https://heropy.blog/2017/09/30/markdown/
@@ -52,10 +56,6 @@ _기울게_ _기울게_
 ---
 
 ---
-
-# 6. 이미지 추가
-
-![this_screenshot](./img/??.PNG)
 
 # 7. 목록
 
