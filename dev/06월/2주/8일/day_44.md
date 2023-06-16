@@ -450,6 +450,41 @@ Daily Incremental Update를 구현해야 한다면?
 - Airflow의 **start_date**은 시작 날짜라기는 보다는 처음 읽어와야하는 데이터의 날짜임
 - **execution_date**은 읽어와야하는 데이터의 날짜로 설정됨
 
+  ![this_screenshot](./img/6.PNG)
+
+<br>
+
+start_date과 execution_date 이해하기
+
+- 2020-08-10 02:00:00로 start date로 설정된 daily job이 있다
+  - catchup이 True로 설정되어 있다고 가정 (디폴트가 True)
+- 지금 시간이 2020-08-13 20:00:00이고 처음으로 이 job이 활성화되었다
+- 질문: 이 경우 이 job은 몇번 실행될까? (execution_date)
+
+- 2020-08-10 02:00:00 (o) - execution_date
+- 2020-08-11 02:00:00 (o) - execution_date
+- 2020-08-12 02:00:00 (o) - execution_date
+- 2020-08-13 02:00:00 (x) - 다음 날 실행
+
+<br>
+
+Backfill과 관련된 Airflow 변수들
+
+- start_date: \
+  DAG가 처음 실행되는 날짜가 아니라 DAG가 처음 읽어와야하는
+  데이터의 날짜/시간. \
+  실제 첫 실행날짜는 start_date + DAG의 실행주기
+
+- execution_date: \
+  DAG가 읽어와야하는 데이터의 날짜와 시간
+- catchup: \
+  DAG가 처음 활성화된 시점이 start_date보다 미래라면 그 사이에 실행이 안된 \
+  것들을 어떻게 할 것인지 결정해주는 파라미터. True가 디폴트값이고 이 경우 \
+  실행안 된 것들을 모두 따라잡으려고 함. False가 되면 실행안된 것들을 무시함
+- end_date: \
+  이 값은 보통 필요하지 않으며 Backfill을 날짜 범위에 대해 하는 경우에만 필요 \
+  airflow dags backfill -s …. -e ….
+
 <br>
 <br>
 <br>

@@ -1,5 +1,15 @@
 ## <u>1. docker-day2-1-챕터소개와-1장퀴즈리뷰</u>
 
+Contents
+
+1. 1장 퀴즈 리뷰
+2. 학습 목표 소개
+3. Hangman 서비스 소개
+4. Hangman 서비스를 Dockerization하기 (숙제)
+5. CI/CD와 Github Actions 소개
+6. Github Actions 사용 1: 테스트 추가
+7. Github Actions 사용 2: Dockerization 추가
+
 ### 1장 퀴즈 리뷰
 
 1. Container를 사용하는 경우의 장점으로 맞는 것
@@ -49,9 +59,45 @@
 <br>
 <br>
 
-## <u>1. docker-day2-1-챕터소개와-1장퀴즈리뷰</u>
+## <u>2. docker-day2-2-학습 목표와 Hangman 서비스 소개</u>
 
-### 1장 퀴즈 리뷰
+### 학습 목표 소개
+
+웹서비스를 Docker로 구동해보는 전체 과정 익히기
+
+- hangman_web이라는 repo의 main에 코드가 머지될 때마다 다음을 수행
+
+1. 테스트 수행
+2. Docker Image 빌드
+
+- 이를 위해 Dockerfile 부터 만들어볼 예정
+
+3. Docker Image를 Docker Hub로 푸시
+
+- 위 과정을 Github repo에 Github Actions으로 구현
+
+<br>
+
+Hangman 프로그램
+
+- hangman 프로그램을 flask를 사용하여 웹으로 노출
+  - 포트번호는 어디든 바인딩 가능하며 실행할 때 지정
+  - flask 관련 모듈 설치가 필요함: requirements.txt
+- 실행 방법
+  - python3 -m flask run --host=0.0.0.0 --port=4000
+    - 이 경우 app.py를 기본으로 사용함
+
+<br>
+
+![this_screenshot](./img/1.PNG)
+
+<br>
+
+### 실습: https://labs.play-with-docker.com/
+
+- git clone hangman_web.git
+- pip3 install -r requirements.txt
+- python3 -m flask run --host=0.0.0.0 --port=4000
 
 <br>
 <br>
@@ -127,15 +173,6 @@ CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0", "--port=4000"]
 <br>
 
 - **Keyword**:
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-### **Summary**:
 
 <br>
 <br>
