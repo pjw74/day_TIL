@@ -711,12 +711,6 @@ mysql> $ show tables;
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 ### 특강: [Airflow 환경 구축기] (feat. 김학진 멘토님)
 
@@ -729,6 +723,9 @@ mysql> $ show tables;
 
 - **Keyword**:
 
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>

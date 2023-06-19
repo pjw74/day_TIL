@@ -276,6 +276,185 @@ $ docker run -p 8081:80 --name nginx -v "[로컬 html 폴더]:[docker html 폴�
 
 ### 다수의 Container로 구성된 소프트웨어 실행
 
+팁: Docker 환경 클린업 (1) - 커맨드라인
+
+- Docker Desktop에서 모든 삭제하는 것이 가장 직관적
+  - Image를 삭제하려면 먼저 실행 중인 Container가 없어야함
+  - 따라서 맞는 순서는 먼저 Container를 중단하고 다음으로 Image를 삭제
+- 컨테이너 삭제
+  - 원래는 docker container ls를 하고 Container ID를
+    개별적으로 docker container rm 뒤에 추가해야함
+  - 하지만 한번에 이를 실행하는 것이 더 좋음
+    $ docker container rm -f $(docker container ls -aq)
+- 이미지 삭제
+  - 원래는 docker image ls를 하고 Image ID를 개별적으로 docker image rm 뒤에 추가해야함
+  - 하지만 한번에 이를 실행하는 것이 더 좋음
+    $ docker image rm -f $(docker image ls -q)
+- 정말 다 삭제되었는지 확인
+  - docker ps
+  - docker images
+
+### 실습: CLI:
+
+```bash
+$ docker container ls
+$ docker container ls -aq
+$ docker container rm -f $(docker container ls -aq)
+$ docker ps
+$ docker ps -a
+$ docker images
+$ docker image rm $(docker image ls -aq)
+$ docker image rm -f $(docker image ls -aq)
+$ docker images
+```
+
+<br>
+<br>
+<br>
+
+## <u>5. docker-day3-5-다수의 Container로 구성된 소프트웨어 실행</u>
+
+### voting application을 매뉴얼하게 실행해보기
+
+우리가 실행해볼 프로그램 설명
+
+- Docker에서 제공해주는 예제 프로그램 - Voting application
+
+  ![this_screenshot](./img/3.PNG)
+
+<br>
+
+예제 프로그램 다운로드 받기
+
+- Docker에서 제공해주는 예제 프로그램 - Voting application
+- git clone
+- 코드 살펴보기
+
+  ![this_screenshot](./img/4.PNG)
+
+<br>
+
+먼저 매뉴얼하게 하나씩 빌드해보자
+
+- docker build -t vote ./vote
+- docker build -t result ./result
+- docker build -t worker ./worker
+- docker images
+
+redis와 postgres는 공식 이미지들이라 빌드할 필요가 없음
+
+먼저 매뉴얼하게 하나씩 실행해보자
+
+- docker run -d --name=redis redis
+- docker run -d -e POSTGRES_PASSWORD=postgres --name=db postgres
+- docker run -d --name=vote -p 5001:80 vote
+- docker run -d --name=result -p 5002:80 result
+- docker run -d --name=worker worker
+
+**이렇게 내가 일일히 하나씩 실행하면 동작할까? 각 컴포넌트들간의 네트워크 연결이 안되고 있음!**
+
+<br>
+
+네트워크 관련 이슈를 더 자세히 보자
+
+vote/app.py
+
+```python
+def get_redis():
+  if not hasattr(g, 'redis'):
+  g.redis = Redis(host="redis", db=0, socket_timeout=5)
+  return g.redis
+```
+
+result/server.js
+
+```js
+var pool = new pg.Pool({
+  connectionString: "postgres://postgres:postgres@db/postgres",
+});
+```
+
+worker/Program.cs
+
+```cs
+var pgsql = OpenDbConnection("Server=db;Username=postgres;Password=postgres;");
+var redisConn = OpenRedisConnection("redis");
+```
+
+vote에 로그인해서 iputils-ping 설치 후 ping
+명령으로 redis 호스트 이름이 연결되는지
+확인
+
+```bash
+$ ping redis
+ping: cannot resolve redis: Unknown host
+```
+
+Postgres 연결시 postgres:postgres를 사용하고 있음을 주의깊게 볼것!
+
+<br>
+
+어떻게 Network 이슈를 해결할 수 있을까?
+
+- docker의 network 기능 사용
+  - 전에는 docker run의 link 옵션을 사용
+- network을 하나 만들고 모든 컨테이너들을 이 네트워크 안으로 지정
+  - 연결 상황에 따라 별개의 네트워크를 만들고 사용도 가능함
+    - back-tier
+    - front-tier
+  - 매뉴얼 예제에서는 mynetwork을 하나 만들고 진행 예정
+
+<br>
+
+docker network create
+
+```bash
+$ docker container rm -f $(docker container ls -aq)
+$ docker network create mynetwork
+$ docker run -d --name=redis --network mynetwork redis
+$ docker run -d --name=db -e POSTGRES_PASSWORD=password --network mynetwork postgres
+$ docker run -d --name=vote -p 5001:80 --network mynetwork vote
+$ docker run -d --name=result -p 5002:80 --network mynetwork result
+$ docker run -d --name=worker --network mynetwork worker
+```
+
+<br>
+
+### 실습: CLI:
+
+```bash
+$ git clone ~~~
+$ docker build -t vote ./vote
+$ docker build -t result ./result
+$ docker build -t worker ./worker
+$ docker images
+$ docker run -d --name=redis redis
+$ docker run --name=db postgres
+$ docker run --name=db -e POSTGRES_PASSWORD=password postgres
+$ docker rm db
+$ docker run --name=db -e POSTGRES_PASSWORD=password postgres
+$ docker run -d --name=vote -p 5001:80 vote
+$ docker run -d --name=result -p 5002:80 result
+$ docker run -d --name=worker worker
+# 네트워크 커넥션 이슈
+# ping 테스트 진행
+$ docker exec -it --user root vote sh
+# apt update
+# apt install iputils-ping
+# ping redis
+$ docker container rm -f $(docker container ls -aq)
+$ docker network create mynetwork
+$ docker run -d --name=redis --network mynetwork redis
+docker run -d --name=db -e POSTGRES_PASSWORD=password --network mynetwork postgres
+docker run -d --name=vote -p 5001:80 --network mynetwork vote
+docker run -d --name=result -p 5002:80 --network mynetwork result
+docker run -d --name=worker --network mynetwork worker
+$ docker exec -it --user root vote sh
+# apt update
+# apt install iputils-ping
+# ping vote
+```
+
 <br>
 <br>
 <br>
