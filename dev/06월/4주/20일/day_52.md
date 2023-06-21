@@ -123,7 +123,140 @@ Google Drive API 활성
 
 ## <u>4. airflowdbt-day2-4-Airflow API와 모니터링</u>
 
-### 구글 시트 연동하기 (2)
+### API & Airflow 모니터링
+
+이번 섹션에서 해보고자 하는 일들
+
+- Airflow의 건강 여부 체크 (health check)을 어떻게 할지 학습
+- Airflow API로 외부에서 Airflow를 조작해보는 방법에 대해 학습
+
+<br>
+
+Airflow API 활성화 (1)
+
+- airflow.cfg의 api 섹션에서 auth_backend의 값을 변경
+
+  ```yml
+  [api]
+  auth_backend = airflow.api.auth.backend.basic_auth
+  ```
+
+- docker-compose.yaml에는 이미 설정이 되어 있음 (environments)
+  AIRFLOW**API**AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
+
+- 아래 명령으로 확인해보기
+
+```bash
+$ docker exec -it learn-airflow-airflow-scheduler-1 airflow config get-value api auth_backend
+airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session
+```
+
+<br>
+
+Airflow API 활성화 (2)
+
+- Airflow Web UI에서 새로운 사용자 추가 (API 사용자)
+  - Security -> List Users -> +
+  - 이후 화면에서 새 사용자 정보 추가 (monitor:MonitorUser1)
+
+<br>
+
+Health API 호출
+
+- /health API 호출
+
+```bash
+curl -X GET --user "monitor:MonitorUser1" http://localhost:8080/health
+```
+
+- 정상 경우 응답:
+
+```json
+{
+  "metadatabase": {
+    "status": "healthy"
+  },
+  "scheduler": {
+    "status": "healthy",
+    "latest_scheduler_heartbeat": "2022-03-12T06:02:38.067178+00:00"
+  }
+}
+```
+
+<br>
+
+API 사용예
+
+- [API 레퍼런스 살펴보기](https://airflow.apache.org/docs/apache-airflow/stable/stable-rest-api-ref.html#section/Overview)
+
+- 특정 DAG를 API로 Trigger하기
+- 모든 DAG 리스트하기
+- 모든 Variable 리스트하기
+- 모든 Config 리스트하기
+
+<br>
+<br>
+<br>
+
+## <u>5. airflowdbt-day2-5-데모-Airflow API와 모니터링</u>
+
+### 데모
+
+- API 활성화 여부 점검
+- API 4개를 실행해보기
+- 모니터링하기
+
+```bash
+$ docker exec -it learn-airflow-airflow-scheduler-1 airflow config get-value api auth_backend
+# 특정 DAG를 API로 Trigger하기
+$ curl -X POST --user "airflow:airflow" -H 'Content-Type: application/json' -d '{"execution_date":"2023-05-29T00:00:00Z"}' "http://localhost:8080/api/v1/dags/HelloWorld/dagRuns"
+# 모든 DAG 리스트하기
+$ curl -X GET --user "airflow:airflow" http://localhost:8080/api/v1/dags
+# 모든 Variable 리스트하기
+$ curl -X GET --user "airflow:airflow" http://localhost:8080/api/v1/variables
+# 모든 Connections 리스트하기
+$ curl -X GET --user "airflow:airflow" http://localhost:8080/api/v1/connections
+# 모든 Config 리스트하기
+$ curl -X GET --user "airflow:airflow" http://localhost:8080/api/v1/config
+$ docker exec -it learn-airflow-airflow-scheduler-1 airflow variables export var.json
+3 variables successfully exported to var.json
+$ docker exec -it learn-airflow-airflow-scheduler-1 airflow connections export conn.json
+Connections successfully exported to conn.json.
+$ docker exec -it learn-airflow-airflow-scheduler-1 airflow connections import conn.json
+$ docker exec -it learn-airflow-airflow-scheduler-1 airflow variables import var.json
+# get_dags.py 생성
+$ curl -X GET --user "airflow:airflow" http://localhost:8080/health
+```
+
+<br>
+<br>
+<br>
+
+## <u>6. airflowdbt-day2-6-숙제</u>
+
+### 1장 후반부 숙제
+
+숙제 1: Dags 리스트를 API로 읽고 활성화되어 있는 DAG만
+찾기
+
+- 모든 DAG 리스트하기
+  - curl -X GET --user "airflow:airflow" http://localhost:8080/api/v1/dags
+- 이 API는 별다른 파라미터가 없이 등록된 모든 DAG를 리턴해줌
+  - 하지만 DAG 별로 주어지는 프로퍼티를 보면 활성화 여부를 나타내주는 것이 하나 있음
+  - 이를 이용해서 지금 활성화되어 있는 DAG만 프린트해주는 파이썬 스크립트를 작성해서 제출하기
+- 제출 방식
+  - Github PR을 하던지 코드를 슬랙으로 DM!
+
+숙제 2: config API는 기본적으로 막혀있는데 이걸 풀려면?
+
+- 먼저 해당 configuration 섹션과 키를 찾아보기 (airflow.cfg)
+- 이를 docker-compose.yaml에서 어떻게 하면 적용하면서 풀어볼 수 있을까?
+- 방법을 슬랙 DM으로 제출!
+
+숙제 3: variables API는 환경변수로 지정된 것도 리턴?
+
+- connections API도 동일하게 동작함
+- 테스트해보고 본인이 발견한 결과를 슬랙 DM으로 제출
 
 <br>
 <br>

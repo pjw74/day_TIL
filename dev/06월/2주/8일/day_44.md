@@ -55,10 +55,14 @@ Airflow와 타임존
 dags 폴더에서 코딩시 작성한다면 주의할 점
 
 - Airflow는 dags 폴더를 주기적으로 스캔함
+
+```yml
   [core]
   dags_folder = /var/lib/airflow/dags
   # How often (in seconds) to scan the DAGs directory for new files. Default to 5 minutes.
   dag_dir_list_interval = 300
+```
+
 - 이때 DAG 모듈이 들어있는 모든 파일들의 메인 함수가 실행이 됨
   - 이 경우 본의 아니게 개발 중인 테스트 코드도 실행될 수 있음
     from airflow import DAG
