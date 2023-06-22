@@ -1071,9 +1071,9 @@ $ vi .\dbt_project.yml
 #   learn_dbt:
 #     example: # 삭제
 #       +materialized: view # 삭제
-$ Remove-Item -Path example -Recurse(mac. rm -rf example)
+$ Remove-Item -Path example -Recurse(macOS: rm -rf example)
 # example 폴더 삭제
-$ New-Item -ItemType Directory -Name "src"(max. mkdir src)
+$ New-Item -ItemType Directory -Name "src"(macOS: mkdir src)
 $ cd src
 $ vi src_user_event.sql
 $ vi src_user_variant.sql
