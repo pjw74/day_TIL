@@ -494,7 +494,91 @@ airflow=# SELECT COUNT(1) FROM dag_run WHERE dag_id = 'HelloWorld'
 
 ## <u>6. airflowdbt-day3-6-Task-Groups</u>
 
-### 데모: CLI: 웹 UI:
+### Task Grouping
+
+태스크 그룹핑의 필요성
+
+- 태스크 수가 많은 DAG라면 태스크들을 성격에 따라 관리하고 싶은 니즈 존재
+  - SubDAG이 사용되다가 Airflow 2.0에서 나온 Task Grouping으로 넘어가는 추세
+    - SubDAG를 비슷한 일을 하는 태스크들을 SubDAG라는 Child Dag로 만들어서 관리
+- 다수의 파일 처리를 하는 DAG라면
+  - 파일 다운로드 태스크들과 파일 체크 태스크와 데이터 처리 태스크들로 구성
+
+<br>
+
+예제 살펴보기 - 소스코드
+
+- learn_airflw/Learn Task Groups
+  - TaskGroup 안에 TaskGroup nesting 가능
+  - TaskGroup도 태스크처럼 실행 순서 정의 가능
+
+```python
+from airflow.utils.task_group import TaskGroup
+
+    start = EmptyOperator(task_id="start")
+
+    with TaskGroup("Download", tooltip="Tasks for downloading data") as section_1:
+        task_1 = EmptyOperator(task_id="task_1")
+        task_2 = BashOperator(task_id="task_2", bash_command='echo 1')
+        task_3 = EmptyOperator(task_id="task_3")
+        task_1 >> [task_2, task_3]
+    start >> section_1
+```
+
+<br>
+
+예제 살펴보기 - 그래프 표현 살펴보기
+
+![this_screenshot](./img/6.PNG)
+
+### 실습: 웹 UI:
+
+Learn_TaskGroups.py
+
+<br>
+<br>
+<br>
+
+## <u>7. airflowdbt-day3-7-Dynamic Dags</u>
+
+### Dynamic Dags
+
+Dynamic Dag란 무엇인가?
+
+- 템플릿과 YAML을 기반으로 DAG를 동적으로 만들어보자
+  - Jinja를 기반으로 DAG 자체의 템플릿을 디자인하고 YAML을 통해 앞서 만든 템플릿에 파라미터를 제공
+- 이를 통해 비슷한 DAG를 계속해서 매뉴얼하게 개발하는 것을 방지
+- DAG를 계속해서 만드는 것과 한 DAG안에서 태스크를 늘리는 것 사이의 밸런스 필요
+  - 오너가 다르거나 태스크의 수가 너무 커지는 경우 DAG를 복제해나가는 것이 더 좋음
+
+<br>
+
+Dynamic Dag의 기본적인 아이디어
+
+![this_screenshot](./img/7.PNG)
+
+<br>
+
+간단한 예제
+
+- dags/dynamic_dags
+
+- 템플릿을 통한 최종 DAG 파일 생성
+  - learn-airflow % python3 dags/dynamic_dags/generator.py
+- 이는 dags 폴더에 yml 파일의 수 만큼의 DAG 코드를 생성해줌
+
+  - generator 실행을 언제할지 결정이 필요
+
+    ![this_screenshot](./img/8.PNG)
+
+### 실습: CLI: 웹 UI:
+
+```bash
+$ python3 .\dags\dynamic_dags\generator.py
+$ Get-ChildItem get*
+# get_price_APPL.py
+# get_price_GOOG.py
+```
 
 <br>
 <br>
@@ -511,4 +595,3 @@ airflow=# SELECT COUNT(1) FROM dag_run WHERE dag_id = 'HelloWorld'
 <br>
 <br>
 <br>
-```
