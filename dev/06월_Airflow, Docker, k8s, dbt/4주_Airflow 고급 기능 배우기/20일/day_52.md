@@ -236,8 +236,7 @@ $ curl -X GET --user "airflow:airflow" http://localhost:8080/health
 
 ### 1장 후반부 숙제
 
-숙제 1: Dags 리스트를 API로 읽고 활성화되어 있는 DAG만
-찾기
+숙제 1: Dags 리스트를 API로 읽고 활성화되어 있는 DAG만 찾기
 
 - 모든 DAG 리스트하기
   - curl -X GET --user "airflow:airflow" http://localhost:8080/api/v1/dags

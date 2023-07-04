@@ -1141,21 +1141,18 @@ $ vi .\dim\dim_user.sql
 $ vi .\analytics\analytics_variant_user_daily.sql
 $
 $
-$
-$
-$
-$
-$
-$
-$
-
-
-
-
-
-
-
 ```
+
+<br>
+<br>
+<br>
+
+## <u>8. airflowdbt-day4-8-숙제</u>
+
+### 오늘의 숙제
+
+- 오늘 배운 내용을 다 따라해보기
+- 최종 analytics 테이블의 타입을 View에서 Table로 바꾸기
 
 <br>
 <br>
