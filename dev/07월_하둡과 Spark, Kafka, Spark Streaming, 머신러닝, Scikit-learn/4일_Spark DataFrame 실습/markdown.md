@@ -4,6 +4,12 @@
 
 ![this_screenshot](./img/??.PNG)
 
+| 클러스터 매니저 | 실행 모드 (deployed mode) | 프로그램 실행 방식       |
+| --------------- | ------------------------- | ------------------------ |
+| local[n]        | Client                    | Spark Shell, IDE, 노트북 |
+| YARN            | Client                    | Spark Shell, 노트북      |
+| YARN            | Cluster                   | spark-submit             |
+
 # 0. 더보기
 
 [참조 링크1]: https://heropy.blog/2017/09/30/markdown/
