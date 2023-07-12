@@ -304,6 +304,8 @@ File System Partitioning
 ### 실습: local standalone: colab:
 
 <br>
+<br>
+<br>
 
 ## <u>4. Spark 내부동작 summary</u>
 
